@@ -23,7 +23,7 @@
 
 <style>
     .results-screen {
-        width: 70%;
+        width: 90%;
         height: 80%;
         background-color: rgba(255, 255, 255, 0.966);
         border-radius: 30px;
