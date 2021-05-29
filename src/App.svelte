@@ -1,4 +1,9 @@
 <script>
+	const player = {
+		name:'',
+		difficulty:'',
+		score:0
+	}
 	// export let name;
 	import Welcome from './components/Welcome.svelte';
 	import Info from './components/Info.svelte';
@@ -10,12 +15,13 @@
 </script>
 
 <main>
+	<h1>player name is {player.name} difficulty chosen is {player.difficulty}</h1>
 	<Welcome />
+	<Input bind:name={player.name}/>
 	<Info />
-	<Input />
-	<Difficulty />
+	<Difficulty bind:difficulty={player.difficulty} />
 	<Questions />
-	<Results />
+	<Results name={player.name} />
 	<Leaderboard />
 </main>
 

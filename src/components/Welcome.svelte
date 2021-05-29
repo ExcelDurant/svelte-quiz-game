@@ -1,5 +1,5 @@
 <div class="page">
-    <div class="txt-container">
+    <div class="game-screen">
         <h1 class="title text-flicker-in-glow">
             troptop <br />
             quiz
@@ -19,8 +19,8 @@
         justify-content: center;
         align-items: center;
     }
-    .txt-container {
-        width: 600px;
+    .game-screen {
+        width: 700px;
         height: 700px;
         display: flex;
         flex-direction: column;
@@ -54,7 +54,7 @@
         margin-bottom: 30px;
         text-transform: uppercase;
         box-shadow: 0 0 0 rgba(88, 120, 243, 0.4);
-        animation: pulseAnim 3s infinite;
+        animation: pulseAnim 2.5s infinite;
     }
     @keyframes pulseAnim {
     0% {
