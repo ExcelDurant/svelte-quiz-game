@@ -110,7 +110,7 @@
 	@media (max-width: 840px) {
 		.game-screen {
 			width: 100%;
-			height: 80vh;
+			height: 100vh;
 		}
 	}
 </style>
