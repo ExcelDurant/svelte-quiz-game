@@ -1,50 +1,32 @@
 <script>
     export let name;
+    export let showScreen;
+    export let showNext = false;
     function handleClick() {
         if (name !== "") {
             alert("your name is " + name);
+            showScreen = false;
+            showNext = true;
         } else {
             alert("please enter your name to continue");
         }
     }
 </script>
 
-<div class="page">
-    <div class="game-screen">
-        <div class="input-container">
-            <h2 class="title">Please enter your name to continue</h2>
-            <input
-                type="text"
-                placeholder="name here"
-                class="name-in"
-                bind:value={name}
-            />
-            <button on:click={handleClick} class="submit-btn">Continue</button>
-        </div>
-    </div>
+<div class="input-container">
+    <h2 class="title">Please enter your name to continue</h2>
+    <input
+        type="text"
+        placeholder="name here"
+        class="name-in"
+        bind:value={name}
+    />
+    <button on:click={handleClick} class="submit-btn">Continue</button>
 </div>
 
 <style>
-    .page {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .game-screen {
-        width: 700px;
-        height: 700px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: url("./../assets/quiz4.jpeg");
-        background-size: 100% 100%;
-        background-position: 40% 100%;
-    }
     .input-container {
-        width: 55%;
+        width: 70%;
         height: 80%;
         background-color: rgba(255, 255, 255, 0.966);
         border-radius: 30px;

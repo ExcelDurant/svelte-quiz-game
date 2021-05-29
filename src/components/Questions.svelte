@@ -1,4 +1,7 @@
 <script>
+    export let showScreen;
+    export let showNext = false;
+
     // imports the points from the main component
     export let points;
 
@@ -17,7 +20,7 @@
     // see if the answer chosen is the correct answer
     const answered = (answer) => () => {
         if (answer == questions[n].correctAns) {
-            alert("you chose the correct answer");
+            // alert("you chose the correct answer");
             // adds one point if the answer is correct
             if (time >= 12) {
                 points += 3;
@@ -40,7 +43,7 @@
 
     // wrong answer function
     function falseAns() {
-        alert("you chose the wrong answer");
+        // alert("you chose the wrong answer");
         // removes one life
         lives -= 1;
         // deletes the current question
@@ -64,72 +67,52 @@
             falseAns();
         }
     }, 1000);
+
+    // run the logic reactively in the background
+    $: if (lives <= -1) {
+        showScreen = false;
+        showNext = true;
+    }
 </script>
 
-<div class="page">
-    <div class="game-screen">
-        <div class="questions-screen">
-            <div class="top-sec">
-                <div class="lives-container">
-                    <h4 class="lives-txt">{lives} lives left</h4>
-                </div>
-                <div class="points-container">
-                    <h4 class="points-txt">
-                        {points} points
-                    </h4>
-                </div>
-            </div>
-            <div class="countdown-container">
-                <h5 class="countdown-txt">{time}</h5>
-            </div>
-            <div class="question-container">
-                <h3 class="question-txt">
-                    {questions[n].question}
-                </h3>
-            </div>
-            <div class="answers-container">
-                <button
-                    on:click={answered(questions[n].answers[0])}
-                    class="ans-btn">{questions[n].answers[0]}</button
-                >
-                <button
-                    on:click={answered(questions[n].answers[1])}
-                    class="ans-btn">{questions[n].answers[1]}</button
-                >
-                <button
-                    on:click={answered(questions[n].answers[2])}
-                    class="ans-btn">{questions[n].answers[2]}</button
-                >
-                <button
-                    on:click={answered(questions[n].answers[3])}
-                    class="ans-btn">{questions[n].answers[3]}</button
-                >
-            </div>
+<div class="questions-screen">
+    <div class="top-sec">
+        <div class="lives-container">
+            <h4 class="lives-txt">{lives} lives left</h4>
         </div>
+        <div class="points-container">
+            <h4 class="points-txt">
+                {points} points
+            </h4>
+        </div>
+    </div>
+    <div class="countdown-container">
+        <h5 class="countdown-txt">{time}</h5>
+    </div>
+    <div class="question-container">
+        <h3 class="question-txt">
+            {questions[n].question}
+        </h3>
+    </div>
+    <div class="answers-container">
+        <button on:click={answered(questions[n].answers[0])} class="ans-btn"
+            >{questions[n].answers[0]}</button
+        >
+        <button on:click={answered(questions[n].answers[1])} class="ans-btn"
+            >{questions[n].answers[1]}</button
+        >
+        <button on:click={answered(questions[n].answers[2])} class="ans-btn"
+            >{questions[n].answers[2]}</button
+        >
+        <button on:click={answered(questions[n].answers[3])} class="ans-btn"
+            >{questions[n].answers[3]}</button
+        >
     </div>
 </div>
 
 <style>
-    .page {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .game-screen {
-        width: 700px;
-        height: 700px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: url("./../assets/quiz4.jpeg");
-        background-size: 100% 100%;
-        background-position: 40% 100%;
-    }
     .questions-screen {
-        width: 55%;
+        width: 80%;
         height: 80%;
         background-color: rgba(255, 255, 255, 0.966);
         border-radius: 30px;

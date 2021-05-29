@@ -1,56 +1,43 @@
 <script>
-    export let difficulty = '';
+    export let difficulty = "";
     export let lives = 0;
+
+    export let showScreen;
+    export let showNext = false;
 
     // function chooseDifficulty(diff){
     //     difficulty = diff;
     // }
-    const chooseDifficulty = diff => () => {
-        if(diff == 'easy') {
+    const chooseDifficulty = (diff) => () => {
+        if (diff == "easy") {
             lives = 8;
-            difficulty = diff;
-        } else if(diff == 'medium') {
+        } else if (diff == "medium") {
             lives = 5;
-            difficulty = diff;
         } else {
             lives = 3;
-            difficulty = diff;
         }
-    }
+        difficulty = diff;
+        showScreen = false;
+        showNext = true;
+    };
 </script>
 
-<div class="page">
-    <div class="game-screen">
-        <div class="input-container">
-            <h2 class="title">Difficulty level:</h2>
-            <button on:click="{chooseDifficulty('easy')}" class="diff-btn easy">easy</button>
-            <button on:click="{chooseDifficulty('medium')}" class="diff-btn medium">medium</button>
-            <button on:click="{chooseDifficulty('hard')}" class="diff-btn hard">hard</button>
-        </div>
-    </div>
+<div class="input-container">
+    <h2 class="title">Difficulty level:</h2>
+    <button on:click={chooseDifficulty("easy")} class="diff-btn easy"
+        >easy</button
+    >
+    <button on:click={chooseDifficulty("medium")} class="diff-btn medium"
+        >medium</button
+    >
+    <button on:click={chooseDifficulty("hard")} class="diff-btn hard"
+        >hard</button
+    >
 </div>
 
 <style>
-    .page {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .game-screen {
-        width: 700px;
-        height: 700px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: url("./../assets/quiz4.jpeg");
-        background-size: 100% 100%;
-        background-position: 40% 100%;
-    }
     .input-container {
-        width: 55%;
+        width: 70%;
         height: 40%;
         background-color: rgba(255, 255, 255, 0.966);
         border-radius: 30px;
