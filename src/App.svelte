@@ -1,8 +1,10 @@
 <script>
+	import questions from './questions';
 	const player = {
 		name:'',
 		difficulty:'',
-		score:0
+		points:0,
+		lives:0
 	}
 	// export let name;
 	import Welcome from './components/Welcome.svelte';
@@ -19,8 +21,8 @@
 	<Welcome />
 	<Input bind:name={player.name}/>
 	<Info />
-	<Difficulty bind:difficulty={player.difficulty} />
-	<Questions />
+	<Difficulty bind:lives={player.lives} bind:difficulty={player.difficulty} />
+	<Questions lives={player.lives} points={player.points} questions={questions.questions}/>
 	<Results name={player.name} />
 	<Leaderboard />
 </main>

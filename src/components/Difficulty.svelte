@@ -1,11 +1,21 @@
 <script>
     export let difficulty = '';
+    export let lives = 0;
 
     // function chooseDifficulty(diff){
     //     difficulty = diff;
     // }
     const chooseDifficulty = diff => () => {
-        difficulty = diff;
+        if(diff == 'easy') {
+            lives = 8;
+            difficulty = diff;
+        } else if(diff == 'medium') {
+            lives = 5;
+            difficulty = diff;
+        } else {
+            lives = 3;
+            difficulty = diff;
+        }
     }
 </script>
 
