@@ -102,6 +102,7 @@
 		
 	</div>
 	<h2>work in progressss...........</h2>
+	<h3>by <a href="https://gnopaexcel.netlify.app" target="_blank">Excel</a></h3>
 	<audio id="game-audio" src="./assets/POL-two-fat-gangsters-short.mp3" bind:paused={playSong} loop=true></audio>
 	<audio id="game-audio" src="./assets/casual-game-lose-sound-effect-45947266.mp3" bind:paused={loseSong}></audio>
 
