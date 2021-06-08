@@ -74,8 +74,9 @@
 		{/if}
 
 		{#if showLead}
-			<Leaderboard />
+			<Leaderboard name={player.name}/>
 		{/if}
+		
 	</div>
 	<h2>work in progressss...........</h2>
 
@@ -115,6 +116,7 @@
 		.game-screen {
 			width: 100%;
 			height: 100vh;
+			background-size: 150% 100%;
 		}
 	}
 </style>

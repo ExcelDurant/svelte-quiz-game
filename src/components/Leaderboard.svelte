@@ -1,13 +1,19 @@
 <script>
+    export let name;
+
     import { db } from "./../firebase.js";
     let results = [];
     db.collection("results")
         .orderBy("points", "desc")
-        .onSnapshot((querySnapshot) => {
+        .get()
+        .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 results = [...results, doc.data()];
             });
             console.log("Current data: ", results);
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
         });
 </script>
 
@@ -23,8 +29,16 @@
                 <th>points</th>
                 <th>date</th>
             </tr>
-            {#each results as result, i}
+
+            <!-- show loading spinner while waiting for results -->
+            {#if results.length == 0}
                 <tr>
+                    <div class="donutSpinner" />
+                </tr>
+            {/if}
+
+            {#each results as result, i}
+                <tr class:user={result.name === name}>
                     <td>{i + 1}</td>
                     <td>{result.name}</td>
                     <td>{result.difficulty}</td>
@@ -40,20 +54,21 @@
 <style>
     .leaderboard-screen {
         width: 95%;
-        height: 80%;
+        height: 100%;
         background-color: rgba(255, 255, 255, 0.966);
         /* border-radius: 30px; */
-        display: flex;
+        /* display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        align-items: center;
+        align-items: center; */
         text-align: center;
-        overflow-y: scroll;
+        overflow: scroll;
     }
     .title {
         font-size: 2.5rem;
         text-transform: uppercase;
         font-family: cursive;
+        margin: 20px auto;
     }
     .leaderboard-container {
         display: flex;
@@ -63,6 +78,8 @@
     }
     .leader-table {
         width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
     }
     th {
         text-transform: capitalize;
@@ -71,6 +88,24 @@
         font-size: 21px;
     }
     td {
-        font-size: 15px;
+        padding: 10px 0;
+    }
+    .user {
+        color: rgb(252, 25, 63);
+    }
+    .donutSpinner {
+        display: inline-block;
+        border: 4px solid hsl(222 100% 95%);
+        border-left-color: hsl(243 80% 62%);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: donut-spin 1.2s linear infinite;
+    }
+
+    @keyframes donut-spin {
+        to {
+            transform: rotate(1turn);
+        }
     }
 </style>

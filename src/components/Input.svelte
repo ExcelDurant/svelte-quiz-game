@@ -4,7 +4,7 @@
     export let showNext = false;
     function handleClick() {
         if (name !== "") {
-            alert("your name is " + name);
+            // alert("your name is " + name);
             showScreen = false;
             showNext = true;
         } else {
