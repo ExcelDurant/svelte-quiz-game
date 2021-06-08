@@ -10,13 +10,36 @@
 	};
 
 
-
 	let showWelcome = true;
 	let showInput = false;
 	let showDiff = false;
 	let showQuest = false;
 	let showRes = false;
 	let showLead = false;
+
+	let playSong = true;
+	let loseSong = true;
+	$:if(!showWelcome) {
+		playSong = showRes;
+		loseSong = !playSong;
+		console.log(playSong);
+	}
+
+	// function playingSound() {
+	// 	if(showWelcome = true) {
+	// 		console.log("true")
+	// 		return true;	
+	// 	} else if(!showWelcome) {
+	// 		console.log("false")
+	// 		return false;
+	// 	}
+	// }
+	// $:playSong = !showLead;
+	// if(showWelcome = false) {
+	// 	playSong = false;
+	// } else if(showLead) {
+	// 	playSong = true;
+	// }
 
 	// export let name;
 	import Welcome from "./components/Welcome.svelte";
@@ -79,6 +102,8 @@
 		
 	</div>
 	<h2>work in progressss...........</h2>
+	<audio id="game-audio" src="./assets/POL-two-fat-gangsters-short.mp3" bind:paused={playSong} loop=true></audio>
+	<audio id="game-audio" src="./assets/casual-game-lose-sound-effect-45947266.mp3" bind:paused={loseSong}></audio>
 
 	<!-- <Info /> -->
 </main>

@@ -95,11 +95,11 @@
     }
     .donutSpinner {
         display: inline-block;
-        border: 4px solid hsl(222 100% 95%);
+        border: 7px solid hsl(222 100% 95%);
         border-left-color: hsl(243 80% 62%);
         border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        width: 80px;
+        height: 80px;
         animation: donut-spin 1.2s linear infinite;
     }
 

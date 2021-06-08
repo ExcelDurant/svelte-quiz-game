@@ -14,6 +14,11 @@
     // sets the timer to 18 seconds
     let time = 19;
 
+    let correctSound1 = true;
+    let correctSound2 = true;
+    let correctSound3 = true;
+    let falseSound = true;
+
     // chooses the first question randomly
     let n = Math.floor(Math.random() * questions.length);
 
@@ -22,12 +27,15 @@
         if (answer == questions[n].correctAns) {
             // alert("you chose the correct answer");
             // adds one point if the answer is correct
-            if (time >= 12) {
+            if (time >= 14) {
                 points += 3;
-            } else if (time >= 8 && seconds < 12) {
+                correctSound3 = false;
+            } else if (time >= 8 && time < 14) {
                 points += 2;
+                correctSound2 = false;
             } else {
                 points += 1;
+                correctSound1 = false;
             }
             // deletes the current question
             questions.splice(n, 1);
@@ -43,6 +51,7 @@
 
     // wrong answer function
     function falseAns() {
+        falseSound = false;
         // alert("you chose the wrong answer");
         // removes one life
         lives -= 1;
@@ -109,6 +118,10 @@
         >
     </div>
 </div>
+<audio id="point3-audio" src="./assets/point1.mp3" bind:paused={correctSound1}></audio>
+<audio id="point3-audio" src="./assets/point2.mp3" bind:paused={correctSound2}></audio>
+<audio id="point3-audio" src="./assets/point3a.mp3" bind:paused={correctSound3}></audio>
+<audio id="point3-audio" src="./assets/wrong.mp3" bind:paused={falseSound}></audio>
 
 <style>
     .questions-screen {
