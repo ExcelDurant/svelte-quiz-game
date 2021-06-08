@@ -1,13 +1,69 @@
 <script>
     export let name;
     export let points;
+    export let difficulty;
 
     export let showScreen;
     export let showNext = false;
 
+    let status;
+
+    let date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+
+    import { db } from "./../firebase.js";
+
+    const statuses = {
+        one:"the cow🐄",
+        two:"the pig🐖",
+        three:"the mosquito🦟",
+        four:"the fowl🍗",
+        five:"the donkey🦙",
+        six:"the lizard🦎",
+        seven:"the sage",
+        eigth:"le goat",
+        nine:"UNBEATABLE",
+        ten:"OMNI-MAN"
+    }
+
+    if (points <= 10) {
+        status = statuses.one
+    } else if (points <= 20 && points > 10) {
+        status = statuses.two
+    } else if (points <= 30 && points > 20) {
+        status = statuses.three
+    } else if (points <= 40 && points > 30) {
+        status = statuses.four
+    } else if (points <= 50 && points > 40) {
+        status = statuses.five
+    } else if (points <= 80 && points > 50) {
+        status = statuses.six
+    } else if (points <= 90 && points > 80) {
+        status = statuses.seven
+    } else if (points <= 100 && points > 90) {
+        status = statuses.eigth
+    } else if (points <= 110 && points > 100) {
+        status = statuses.nine
+    } else {
+        status = statuses.ten
+    }
+
     function removeScreen() {
-        showScreen = false;
-        showNext = true;
+        db.collection("results")
+            .add({
+                name: name,
+                points: points,
+                difficulty: difficulty,
+                status:status,
+                date: date
+            })
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+                showScreen = false;
+                showNext = true;
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
     }
 </script>
 
@@ -18,6 +74,7 @@
     <h5 class="point">
         You finished with <span class="highlight">{points} points!!!</span>
     </h5>
+    <h3 class="congrat">status: {status}</h3>
     <button on:click={removeScreen} class="lead-btn">View Leaderboard</button>
 </div>
 

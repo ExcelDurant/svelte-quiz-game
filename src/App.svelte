@@ -1,11 +1,15 @@
 <script>
 	import questions from "./questions";
+	import { db } from "./firebase.js";
+
 	const player = {
 		name: "",
 		difficulty: "",
 		points: 0,
 		lives: 0,
 	};
+
+
 
 	let showWelcome = true;
 	let showInput = false;
@@ -63,8 +67,7 @@
 
 		{#if showRes}
 			<Results
-				name={player.name}
-				points={player.points}
+				{...player}
 				bind:showScreen={showRes}
 				bind:showNext={showLead}
 			/>
@@ -75,6 +78,7 @@
 		{/if}
 	</div>
 	<h2>work in progressss...........</h2>
+
 	<!-- <Info /> -->
 </main>
 

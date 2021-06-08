@@ -1,3 +1,16 @@
+<script>
+    import { db } from "./../firebase.js";
+    let results = [];
+    db.collection("results")
+        .orderBy("points", "desc")
+        .onSnapshot((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                results = [...results, doc.data()];
+            });
+            console.log("Current data: ", results);
+        });
+</script>
+
 <div class="leaderboard-screen">
     <h2 class="title">leaderboard</h2>
     <div class="leaderboard-container">
@@ -10,38 +23,16 @@
                 <th>points</th>
                 <th>date</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Excel Durant</td>
-                <td>hard</td>
-                <td>le goat</td>
-                <td>120</td>
-                <td>29/05/2021</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Excel Durant</td>
-                <td>hard</td>
-                <td>le goat</td>
-                <td>120</td>
-                <td>29/05/2021</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Excel Durant</td>
-                <td>hard</td>
-                <td>le goat</td>
-                <td>120</td>
-                <td>29/05/2021</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Excel Durant</td>
-                <td>hard</td>
-                <td>le goat</td>
-                <td>120</td>
-                <td>29/05/2021</td>
-            </tr>
+            {#each results as result, i}
+                <tr>
+                    <td>{i + 1}</td>
+                    <td>{result.name}</td>
+                    <td>{result.difficulty}</td>
+                    <td>{result.status}</td>
+                    <td>{result.points}</td>
+                    <td>{result.date}</td>
+                </tr>
+            {/each}
         </table>
     </div>
 </div>
