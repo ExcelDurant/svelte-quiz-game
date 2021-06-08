@@ -48,7 +48,7 @@
 
 <style>
     .leaderboard-screen {
-        width: 80%;
+        width: 95%;
         height: 80%;
         background-color: rgba(255, 255, 255, 0.966);
         /* border-radius: 30px; */

@@ -74,7 +74,7 @@
 			<Leaderboard />
 		{/if}
 	</div>
-
+	<h2>work in progressss...........</h2>
 	<!-- <Info /> -->
 </main>
 
@@ -91,7 +91,7 @@
 	.game-screen {
 		width: 40%;
 		max-width: 700px;
-		height: 700px;
+		height: 600px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
