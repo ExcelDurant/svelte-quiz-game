@@ -54,6 +54,11 @@
     box-shadow: 0 0 0 rgba(88, 120, 243, 0.4);
     animation: pulseAnim 2.5s infinite;
   }
+  @media (max-width: 840px) {
+    .title {
+      font-size: 4rem;
+    }
+  }
   @keyframes pulseAnim {
     0% {
       box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.397);
