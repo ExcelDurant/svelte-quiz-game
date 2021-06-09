@@ -75,11 +75,13 @@
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
+        overflow: scroll;
     }
     .leader-table {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0 8px;
+        overflow: scroll;
     }
     th {
         text-transform: capitalize;
