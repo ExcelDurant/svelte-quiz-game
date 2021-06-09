@@ -106,8 +106,11 @@
     }
 
     @media (max-width: 840px) {
+        .leader-table {
+            border-spacing: 0;
+        }
         th {
-            font-size: 17px;
+            font-size: 15px;
         }
         td {
             font-size: 13px;
