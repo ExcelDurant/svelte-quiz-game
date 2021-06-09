@@ -78,10 +78,10 @@
         overflow: scroll;
     }
     .leader-table {
-        width: 100%;
+        width: auto;
         border-collapse: separate;
         border-spacing: 0 8px;
-        overflow: scroll;
+        /* overflow: scroll; */
     }
     th {
         text-transform: capitalize;
@@ -103,6 +103,15 @@
         width: 80px;
         height: 80px;
         animation: donut-spin 1.2s linear infinite;
+    }
+
+    @media (max-width: 840px) {
+        th {
+            font-size: 17px;
+        }
+        td {
+            font-size: 13px;
+        }
     }
 
     @keyframes donut-spin {
