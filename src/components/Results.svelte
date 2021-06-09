@@ -7,54 +7,61 @@
     export let showNext = false;
 
     let status;
+    let showLoading = false;
 
-    let date = new Date().toJSON().slice(0,10).replace(/-/g,'/')+ " " + (new Date().getHours())+ ":"+ (new Date().getMinutes());
+    let date =
+        new Date().toJSON().slice(0, 10).replace(/-/g, "/") +
+        " " +
+        new Date().getHours() +
+        ":" +
+        new Date().getMinutes();
 
     import { db } from "./../firebase.js";
 
     const statuses = {
-        one:"the cow🐄",
-        two:"the pig🐖",
-        three:"the mosquito🦟",
-        four:"the fowl🍗",
-        five:"the donkey🦙",
-        six:"the lizard🦎",
-        seven:"the sage",
-        eigth:"le goat",
-        nine:"UNBEATABLE",
-        ten:"OMNI-MAN"
-    }
+        one: "the cow🐄",
+        two: "the pig🐖",
+        three: "the mosquito🦟",
+        four: "the fowl🍗",
+        five: "the donkey🦙",
+        six: "the lizard🦎",
+        seven: "the sage",
+        eigth: "le goat",
+        nine: "UNBEATABLE",
+        ten: "OMNI-MAN",
+    };
 
     if (points <= 10) {
-        status = statuses.one
+        status = statuses.one;
     } else if (points <= 20 && points > 10) {
-        status = statuses.two
+        status = statuses.two;
     } else if (points <= 30 && points > 20) {
-        status = statuses.three
+        status = statuses.three;
     } else if (points <= 40 && points > 30) {
-        status = statuses.four
+        status = statuses.four;
     } else if (points <= 50 && points > 40) {
-        status = statuses.five
+        status = statuses.five;
     } else if (points <= 80 && points > 50) {
-        status = statuses.six
+        status = statuses.six;
     } else if (points <= 90 && points > 80) {
-        status = statuses.seven
+        status = statuses.seven;
     } else if (points <= 100 && points > 90) {
-        status = statuses.eigth
+        status = statuses.eigth;
     } else if (points <= 110 && points > 100) {
-        status = statuses.nine
+        status = statuses.nine;
     } else {
-        status = statuses.ten
+        status = statuses.ten;
     }
 
     function removeScreen() {
+        showLoading = true;
         db.collection("results")
             .add({
                 name: name,
                 points: points,
                 difficulty: difficulty,
-                status:status,
-                date: date
+                status: status,
+                date: date,
             })
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
@@ -76,6 +83,11 @@
     </h5>
     <h3 class="congrat">status: {status}</h3>
     <button on:click={removeScreen} class="lead-btn">View Leaderboard</button>
+    {#if showLoading}
+        <h4 class="loading-txt">
+            sending your results please wait............
+        </h4>
+    {/if}
 </div>
 
 <style>
