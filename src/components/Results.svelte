@@ -8,7 +8,7 @@
 
     let status;
 
-    let date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+    let date = new Date().toJSON().slice(0,10).replace(/-/g,'/')+ " " + (new Date().getHours())+ ":"+ (new Date().getMinutes());
 
     import { db } from "./../firebase.js";
 
@@ -69,7 +69,7 @@
 
 <div class="results-screen">
     <h3 class="congrat">
-        Congratulations {name} you successfully failed
+        Congratulations {name} you successfully failed at {date}
     </h3>
     <h5 class="point">
         You finished with <span class="highlight">{points} points!!!</span>
