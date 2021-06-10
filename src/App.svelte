@@ -144,6 +144,7 @@
 			height: 100vh;
 			background-size: 150% 100%;
 			background-position: 50% 100%;
+			overflow: auto;
 		}
 	}
 </style>
