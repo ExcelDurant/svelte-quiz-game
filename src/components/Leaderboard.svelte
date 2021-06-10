@@ -53,16 +53,11 @@
 
 <style>
     .leaderboard-screen {
-        width: 95%;
+        width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, 0.966);
-        /* border-radius: 30px; */
-        /* display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center; */
         text-align: center;
-        overflow: scroll;
+        overflow: auto;
     }
     .title {
         font-size: 2.5rem;
@@ -74,8 +69,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 100%;
-        overflow: scroll;
+        width: auto;
+        overflow: auto;
     }
     .leader-table {
         width: auto;
