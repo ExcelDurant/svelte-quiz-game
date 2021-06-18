@@ -70,6 +70,7 @@
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
+                window.alert("Something went wrong. Please try again");
             });
     }
 </script>
